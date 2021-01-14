@@ -13,40 +13,75 @@ class Num
     return true if @numero < 16
   end
 
-  def binary
-    @numero.to_s(2)
-  end
-end
-
-class Handshake
-  def evaluation
-    secret = []
-    numbinary = binary
-    separacion = binary.chars.reverse
-
-    separacion.each do |bin|
-      secret << bin
+  def saludos
+    saludos = []
+    
+    @numero.to_s(2).reverse.chars.zip(EVALUATION).each do |bin, saludo|
+      if bin =='1'
+        saludo[saludos]
+      end
     end
 
-    if @numero.mayor?
-      
-
-    end
+    saludos
   end
+
+  #private
+  #EVALUATION = [ -> {|saludos| saludos << 'wink' },
+  #  -> {|saludos| saludos << 'double blink' },
+  #  -> {|saludos| saludos << 'close your eyes' },
+  #  -> {|saludos| saludos << 'jump' }
+  #]
 end
+
+
+
+#class Handshake < Num
+
+#  def initialize(numero)
+#    @numero = numero
+#    #@secret = secret
+#  end
+
+#  def order
+#    @secret = []
+ #   @cadena = []
+  #  @separacion = binary.chars.reverse
+   # @separacion.each do |bin|
+    #  @secret << bin
+#    end
+#    if menor?
+#      @secret[1]
+#    end
+#    if mayor?
+#      @secret[0]
+#    end
+#  end
+
+#  def evaluation(secret)
+#    @cadena = []
+#    @cadena[0] = 'wink' if secret[0] == 1
+#    @cadena[1] = 'double blink' if secret[1] == 1
+#    @cadena[2] = 'close your eyes' if secret[2] == 1
+#    @cadena[3] = 'jump' if secret[3] == 1
+#    return @cadena
+#  end
+#end
 
 #------
-secret_handshake = Num.new(20)
+secret_handshake = Num.new(16)
 puts secret_handshake.mayor?
 puts secret_handshake.menor?
-puts secret_handshake.binary
-puts secret_handshake.binary.reverse
+puts secret_handshake.saludos
+#puts secret_handshake.evaluation
 
-palabras = secret_handshake.binary.chars.reverse
+#palabras = secret_handshake.saludo
 # Igualmente se puede recorrer
-secret = []
-palabras.each do |palabra|
-	secret << palabra
-end
+#secret = []
+#palabras.each do |palabra|
+#	secret << palabra
+#end
 
-puts secret[0]
+#puts secret[0]
+#puts secret[1]
+#puts secret[2]
+#puts secret[3]
